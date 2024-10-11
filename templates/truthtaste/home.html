@@ -1,0 +1,29 @@
+{% extends "truthtaste/base.html" %}
+{% load static %}
+{% block page-title %}Home Page{% endblock %}
+
+{% block extra-css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
+{% endblock %}
+
+{% block main-content %}
+    <div class="home-page">
+        <div class="welcome-text">
+            <h1>Discover NoVA's Best Dining</h1>
+        </div>
+
+        <section class="search-wrapper">
+            <p class="search-desc">
+                Dive into reviews of the most applauded restaurants in Northern Virginia.<br>
+                Join us now to share your gourmet experiences!
+            </p>
+            <a href="{% url 'users:register' %}" class="auth-button">Create an Account</a>
+            or
+            <a href="{% url 'users:log-in-page' %}" class="auth-button">Log In</a>
+            or
+            <a href="{% url 'truthtaste:all_restaurant_list' %}" class="cta-btn">Start Browsing as a Guest</a>
+
+        </section>
+    </div>
+    {% include "actions/action/feed.html" %}
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "truthtaste/base.html" %}
+{% load static %}
+{% block page-title %}Sign up page{% endblock %}
+
+{% block extra-css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/sign-up-or-log-in.css' %}"/>
+{% endblock %}
+
+{% block main-content %}
+    <!-- Sign Up Page Content -->
+    <div class="sign-up-page">
+        <!-- Search Section -->
+        <section class="search-wrapper">
+            <form method="POST" action="{% url 'users:register' %}">
+                {% csrf_token %}
+                <h1 class="search-desc">Create a New Account</h1>
+                <p> (* = required)</p><br>
+
+                <div>
+                    <label class="review-section-label" for="register-username">User Name<span class="required">*</span></label>
+                    <input class="input-box" placeholder="Your user name" type="text" name="username" required/>
+                </div>
+                <div>
+                    <label class="review-section-label" for="register-email">Email<span
+                            class="required">*</span></label></br>
+                    <input class="input-box" placeholder="Your Email" type="email" name="email" required/>
+                </div>
+                <div>
+                    <label class="review-section-label" for="register-password">Password<span class="required">*</span></label>
+                    <input class="input-box" placeholder="At least 8 characters" type="password" name="password"
+                           required/>
+                </div>
+                <button class="cta-btn" type="submit" value="register">Register</button>
+            </form>
+            <p class="log-in-info">Already a member? <a href="{% url 'users:log-in-page' %}">Log In</a></p>
+        </section>
+    </div>
+
+{% endblock %}

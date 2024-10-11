@@ -1,0 +1,265 @@
+/* Restaurant Information Page Setting */
+
+.restaurant-details {
+  margin-bottom: 85px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 20px;
+  margin: 10px 40px 120px 40px;
+  line-height: 1.6;
+}
+
+/* Breadcrumb */
+ul.breadcrumb {
+  padding: 10px 16px;
+  list-style: none;
+}
+ul.breadcrumb li {
+  display: inline;
+  font-size: 14px;
+}
+ul.breadcrumb li + li:before {
+  padding: 8px;
+  color: var(--tertiary-text-color);
+  content: "/\00a0";
+}
+ul.breadcrumb li a {
+  color: var(--tertiary-text-color);
+  text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+  color: #01447e;
+  text-decoration: underline;
+}
+
+/* Restaurant Details */
+.restaurant-details {
+  display: flex;
+  gap: 40px;
+}
+
+.restaurant-details h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.restaurant-details p {
+  margin-bottom: 15px;
+}
+
+.description-section {
+  flex: 1;
+  padding: 20px;
+}
+.description-section span {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+/* Image Section */
+
+.image-section {
+  flex: 1;
+  padding: 20px;
+}
+
+.main-image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.small-images {
+  display: flex;
+  justify-content: space-between;
+}
+
+.small-images img {
+  width: calc(20% - 2%);
+  height: auto;
+  cursor: pointer;
+}
+
+.small-images img:hover {
+  opacity: 0.8;
+}
+
+/* Status Buttons(Add to Visited or List) */
+
+.status-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0px 20px;
+}
+
+.status-btn {
+  width: calc(50% - 10px);
+  height: 40px;
+  cursor: pointer;
+  box-sizing: border-box;
+  border: 1px solid var(--border-color);
+  background-color: var(--tertiary-background-color);
+}
+
+.status-btn:hover {
+  background-color: rgb(233, 233, 233);
+}
+
+.status-btn.active {
+  background-color: #aaa;
+}
+
+.status-btn.active .checkmark::before {
+  display: block;
+}
+
+#status-update {
+  color: var(--tertiary-text-color);
+}
+
+/* Review Section */
+
+.review-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+}
+
+/* Review Section Header*/
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.write-review-btn {
+  background-color: var(--primary-button-color);
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+}
+
+.write-review-btn:link,
+.write-review-btn:visited {
+  color: white;
+  text-decoration: none;
+}
+
+.write-review-btn:hover {
+  background-color: var(--primary-button-hover-color);
+  text-decoration: none; /* 這行確保在 hover 時沒有底線 */
+}
+
+/* Review Section Content*/
+
+.review-content {
+  display: flex;
+  gap: 20px;
+}
+
+/* Rating Status */
+
+.review-stats {
+  flex-basis: 30%;
+}
+
+.rating {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.progress-bar progress {
+  flex-grow: 1;
+}
+
+#more-stats {
+  border: 1px solid var(--border-color);
+  padding: 5px 10px 5px;
+  margin: 20px 0 0;
+}
+
+/* Comments */
+
+.review-comments {
+  flex-basis: 70%;
+}
+
+.comment {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 10px 20px 20px 30px;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.comment-header h4 {
+  font-weight: bold;
+}
+
+.comment img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.comment h4 {
+  margin: 1em 1em 0.5em 0em;
+}
+
+.review-image {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+}
+
+/* Mobile Responsive Style */
+@media (max-width: 750px) {
+  .restaurant-info-page {
+    margin: 10px 15px 120px 15px;
+  }
+
+  .restaurant-details {
+    flex-direction: column;
+  }
+
+  .description-section,
+  .image-section {
+    width: 100%;
+  }
+
+  .small-images img {
+    width: calc(19% - 2%);
+  }
+
+  .review-content {
+    flex-direction: column;
+  }
+
+  .write-review-btn {
+    padding: 10px 10px;
+    margin-left: 10px;
+  }
+
+  .review-stats,
+  .review-comments {
+    width: 100%;
+  }
+}

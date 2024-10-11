@@ -1,0 +1,18 @@
+h3, ul {
+    text-align: center;
+}
+
+.activities a {
+    color: #3b02d5;
+}
+
+.activities {
+    margin-bottom: 150px;
+}
+
+@media (max-width: 768px) {
+    .activities {
+        margin-bottom: 300px;
+    }
+}
+

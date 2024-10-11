@@ -1,0 +1,26 @@
+{% extends "truthtaste/base.html" %}
+{% load static %}
+{% block page-title %}Home Page{% endblock %}
+
+{% block extra-css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
+{% endblock %}
+
+{% block main-content %}
+    <div class="home-page">
+        <div class="welcome-text">
+            <h1>Discover NoVA's Best Dining</h1>
+        </div>
+
+        <section class="search-wrapper">
+                <div class="search-desc">
+                    <p>Welcome Back, {{ request.session.username }}!</p>
+                    <p class="personalized-desc">
+                        Continue exploring amazing food in Northern Virginia. Try new flavors, talk about your great meals, and discover more about food.
+                    </p>
+                    <a href="{% url 'truthtaste:all_restaurant_list' %}" class="cta-btn">Continue Browsing</a>
+                </div>
+        </section>
+    </div>
+    {% include "actions/action/feed.html" %}
+{% endblock %}

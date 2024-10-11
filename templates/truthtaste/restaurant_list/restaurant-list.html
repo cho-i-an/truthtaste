@@ -1,0 +1,87 @@
+{% extends "truthtaste/base.html" %}
+{% load static %}
+{% block page-title %}Restaurant list{% endblock %}
+
+{% block extra-css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/restaurant-list.css' %}"/>
+{% endblock %}
+
+{% block main-content %}
+    <div id="restaurant-list-page">
+        <!-- List of restaurants -->
+        <a href="{% url 'truthtaste:add-restaurant' %}" class="button add-button">Add Restaurant</a>
+        <div class="sort-section">
+            <form action="{% url 'truthtaste:all_restaurant_list' %}" method="get" id="sortForm">
+                <label for="sort-dropdown">Sort by:</label>
+                <select id="sort-dropdown" name="sort_by" onchange="document.getElementById('sortForm').submit();">
+                    <option value="title_asc" {% if sort_by == 'title_asc' %}selected{% endif %}>Title (A-Z)</option>
+                    <option value="title_desc" {% if sort_by == 'title_desc' %}selected{% endif %}>Title (Z-A)</option>
+                    <option value="score" {% if sort_by == 'score' %}selected{% endif %}>Score</option>
+                    <option value="type" {% if sort_by == 'type' %}selected{% endif %}>Type</option>
+                </select>
+            </form>
+        </div>
+
+
+        <div class="store-boxes">
+            {% for box in store_boxes %}
+                <div class="store-box">
+                    <div class="store-image">
+                        <a href="#">
+                            <img
+                                    src="{{ box.image.url }}"
+                                    alt="{{ box.image.url }}"
+                            />
+                            <!-- Image Resource: https://unsplash.com -->
+                        </a>
+                    </div>
+                    <div class="store-title">{{ box.title }}</div>
+                    <span class="store-rating">★
+                        {% if box.average_rating %}
+                            {{ box.average_rating|floatformat:1 }}
+                        {% else %}
+                            No ratings yet
+                        {% endif %}</span>
+                    <span class="store-type">{{ box.type }}</span>
+                    <p> {{ box.description }}</p>
+                    <div class="action-icons">
+                        {% if request.session.username %}
+                            {% if request.session.role == 'admin' %}
+                                <a href="{% url 'truthtaste:delete-restaurant' box.id %}"
+                                   onclick="confirmDelete({{ box.id }}, '{{ box.title }}')">
+                                    <img src="{% static 'images/site/delete.svg' %}" alt="Delete"/>
+                                </a>
+                            {% endif %}
+
+                            {% if request.session.role == 'admin' or request.session.role == 'regular' %}
+                                <a href="{% url 'truthtaste:edit-restaurant' box.id %}"><img
+                                        src="{% static 'images/site/edit.svg' %}" alt="Edit"/></a>
+                                </a>
+                            {% endif %}
+                        {% else %}
+                            <a href="#" style="visibility: hidden;"><img src="{% static 'images/site/delete.svg' %}"
+                                                                         alt="Delete"/></a>
+                            <a href="#" style="visibility: hidden;"><img src="{% static 'images/site/edit.svg' %}"
+                                                                         alt="Edit"/></a>
+                        {% endif %}
+                    </div>
+                    <a href="{% url 'truthtaste:restaurant-detail' box.id %}" class="view-details-btn">View Details</a>
+                </div>
+
+                <script type="text/javascript">
+                    function confirmDelete(boxId, boxTitle) {
+                        let confirmation = confirm("Are you sure you want to delete the restaurant: " + boxTitle + "?");
+                        if (confirmation) {
+                            alert("Restaurant: " + boxTitle + " will be deleted.");
+                        } else {
+                            alert("Delete operation cancelled.");
+                        }
+                    }
+                </script>
+            {% empty %}
+                <p>There are currently no restaurants.</p>
+            {% endfor %}
+        </div>
+    </div>
+    {% include "actions/action/feed.html" %}
+{% endblock %}

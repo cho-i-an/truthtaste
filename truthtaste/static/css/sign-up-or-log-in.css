@@ -1,0 +1,131 @@
+/* Sign Up Page Setting */
+.sign-up-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5px;
+}
+
+/* Breadcrumb */
+ul.breadcrumb {
+  padding: 10px 16px;
+  list-style: none;
+}
+ul.breadcrumb li {
+  display: inline;
+  font-size: 14px;
+}
+ul.breadcrumb li + li:before {
+  padding: 8px;
+  color: var(--tertiary-text-color);
+  content: "/\00a0";
+}
+ul.breadcrumb li a {
+  color: var(--tertiary-text-color);
+  text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+  color: #01447e;
+  text-decoration: underline;
+}
+
+/* Search Section */
+
+.search-wrapper {
+  width: 80%;
+  margin: 0 auto 125px;
+  background: var(--tertiary-background-color);
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-desc {
+  padding: 1em;
+}
+
+.homepage-search-bar-section {
+  width: 90%;
+  flex-grow: 1;
+}
+
+.homepage-search-box {
+  background: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  border-radius: 60px;
+  padding: 10px 20px;
+}
+
+.homepage-search-bar-section form {
+  height: 50px;
+  border-radius: 20px;
+}
+
+.homepage-search-bar-section input {
+  background: transparent;
+  flex: 1;
+  border: 0;
+  outline: none;
+  padding: 24px 20px;
+  font-size: 16px;
+}
+
+.review-section-label {
+  padding: 10px;
+  font-weight: bold;
+}
+
+.input-box {
+  width: 70%;
+  max-width: 600px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: box-shadow 0.3s ease;
+}
+
+.input-box:hover {
+  box-shadow: 0 0 10px var(--primary-button-color);
+}
+
+.homepage-search-box button {
+  width: 24px;
+  height: 24px;
+  border: 0;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  background: var(--secondary-background-color);
+  cursor: pointer;
+}
+
+.homepage-search-button img {
+  fill: white;
+}
+
+/* Search Button */
+
+.cta-btn {
+  display: block;
+  margin: 10px auto 15px;
+  height: 45px;
+  border: none;
+  padding: 12px 16px;
+  background-color: var(--primary-button-color);
+  color: white;
+  cursor: pointer;
+}
+
+.cta-btn:hover {
+  background-color: var(--primary-button-hover-color);
+}
+
+/* Log In */
+
+.log-in-info {
+  color: var(--secondary-text-color);
+}

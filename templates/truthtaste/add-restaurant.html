@@ -1,0 +1,42 @@
+{% extends "truthtaste/base.html" %}
+{% load static %}
+{% block page-title %}Restaurant info{% endblock %}
+
+{% block extra-css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/review-form.css' %}"/>
+{% endblock %}
+
+
+{% block main-content %}
+
+    <div class="create-review-page">
+
+        <form method="post" action="{% url 'truthtaste:add-restaurant' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h1>Create a restaurant</h1>
+            <p> (* = required)</p><br>
+
+            <div>
+                <label class="review-section-label">Restaurant Name<span class="required">*</span></label>
+                <input class="input-box" placeholder="" type="text" name="add-title" required>
+            </div>
+
+            <div>
+                <label class="review-section-label">Type<span class="required">*</span></label>
+                <input class="input-box" placeholder="" type="text" name="add-type" required>
+            </div>
+
+            <div>
+                <label class="review-section-label">Description</label>
+                <textarea class="input-box" name="add-description"></textarea>
+            </div>
+
+            <div>
+                <label class="review-section-label">Upload Image<span class="required">*</span></label>
+                <input type="file" name="add-image" required>
+            </div><br>
+
+            <button type="submit" id="submit-btn">Submit</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends "truthtaste/base.html" %}
+{% load static %}
+{% block page-title %}Profile for {{ viewed_user.username }}{% endblock %}
+
+{% block extra-css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}"/>
+{% endblock %}
+
+{% block main-content %}
+    <div class="profile-page">
+
+        <h1>User Profile</h1>
+        <p> (* = required)</p><br>
+
+        <div class="user-info">
+
+        </div>
+
+        <form method="post">
+            {% csrf_token %}
+            <h2 class="review-section-label">Username</h2>
+            <p>{{ viewed_user.username }}</p>
+
+            {# Role #}
+            <h2 class="review-section-label">Role</h2>
+            {% if current_user.details.role == 'admin' %}
+                Recent: {{ viewed_user.details.role }}
+                {{ form.role }}
+            {% else %}
+                <p>{{ viewed_user.details.role }}</p>
+            {% endif %}
+
+            {# First Name #}
+            <h2 class="review-section-label">First Name<span class="required">*</span></h2>
+            {% if editable %}
+                <input type="text" name="{{ form.first_name.html_name }}" id="{{ form.first_name.id_for_label }}"
+                       class="input-box" value="{{ form.first_name.value|default_if_none:'' }}">
+                {{ form.first_name.errors }}
+            {% else %}
+                <p>{{ viewed_user.first_name }}</p>
+            {% endif %}
+
+            {# Last Name #}
+            <h2 class="review-section-label">{{ form.last_name.label }}<span class="required">*</span></h2>
+            {% if editable %}
+                <input type="text" name="{{ form.last_name.html_name }}" id="{{ form.last_name.id_for_label }}"
+                       class="input-box" value="{{ form.last_name.value|default_if_none:'' }}">
+                {{ form.last_name.errors }}
+            {% else %}
+                <p>{{ viewed_user.last_name }}</p>
+            {% endif %}
+
+            {# Email #}
+            <h2 class="review-section-label">{{ form.email.label }}<span class="required">*</span></h2>
+            {% if editable %}
+                <input type="email" name="{{ form.email.html_name }}" id="{{ form.email.id_for_label }}"
+                       class="input-box" value="{{ form.email.value|default_if_none:'' }}">
+                {{ form.email.errors }}
+            {% else %}
+                <p>{{ viewed_user.email }}</p>
+            {% endif %}
+
+            {# Password #}
+            {% if current_user == viewed_user %}
+                <h2 class="review-section-label">Current password or a new password<span class="required">*</span></h2>
+                <input type="password" name="{{ form.password.html_name }}" id="{{ form.password.id_for_label }}"
+                       class="input-box">
+                {#                {{ form.password }}#}
+                {{ form.password.errors }}
+            {% endif %}
+
+            {# Email Subscription #}
+            <h2 class="review-section-label">Email Subscription</h2>
+            {% if editable %}
+                Recent: {{ viewed_user.details.email_subscribe|yesno:"Yes,No" }}
+                <select name="{{ form.email_subscribe.html_name }}" id="{{ form.email_subscribe.id_for_label }}"
+                        class="input-box">
+                    {% for value, text in form.email_subscribe.field.choices %}
+                        <option value="{{ value }}"
+                                {% if form.email_subscribe.value == value %}selected{% endif %}>{{ text }}</option>
+                    {% endfor %}
+                </select>
+                {{ form.email_subscribe.errors }}
+            {% else %}
+                <p>{{ viewed_user.details.email_subscribe|yesno:"Yes,No" }}</p>
+            {% endif %}
+
+            {% if editable %}
+                <button type="submit" id="submit-btn">Save Changes</button>
+            {% else %}
+                <br>
+            {% endif %}
+        </form>
+
+        {% include "actions/action/feed.html" %}
+    </div>
+{% endblock %}

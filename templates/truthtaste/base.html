@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TruthTaste NoVA | {% block page-title %}{% endblock %}</title>
+    <meta charset="utf-8"/>
+    <meta name="description" content="List of restaurants"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel="stylesheet" type="text/css" href="{% static "css/global.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/app.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/app-header.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/app-footer.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/restaurant-list.css" %}"/>
+{#    <script src={% static "js/jquery-3.7.1.min.js" %}></script>#}
+    <script src={% static "js/jquery-3.7.1.min.js" %}></script>
+    <script src={% static "js/script.js" %}></script>
+    {% block extra-css %}{% endblock %}
+
+
+{#    <script src="static/js/script.js"></script>#}
+</head>
+
+<body>
+<!-- HEADER -->
+<header class="header-container">
+    <a href="{% url 'truthtaste:home' %}" class="logo-container">
+        <img id="logo" src="{% static "images/site/TruthTaste-logo-only.png" %}" alt="Logo"/>
+        <h1 id="title">TruthTaste<br/>NoVA</h1>
+    </a>
+
+    <!-- Search Bar -->
+    <div class="search-bar-section">
+        <form action="search-result.html" class="search-box">
+            <input type="text" class="search-bar" placeholder="Search Restaurant by Location, Name, or Type"/>
+            <button type="submit" class="search-button">
+                <img
+                        src="{% static "images/site/search.svg" %}"
+                        alt="Search"
+                />
+            </button>
+        </form>
+    </div>
+
+    <!-- Icons -->
+    {% if request.session.username %}
+        <div class="nav-icons">
+            <a href="{% url 'truthtaste:all_restaurant_list' %}" class="nav-button">
+                <img src="{% static "images/site/list.svg" %}" alt="List Button"/>
+                <span class="nav-button-label">List</span>
+            </a>
+
+            <a href="{% url 'users:profile' request.session.username %}" class="nav-button">
+                <img src="{% static "images/site/user.svg" %}" alt="User Button"/>
+                <span class="nav-button-label">{{ request.session.username }}</span></a
+            >
+
+            <a href="{% url 'users:logout' %}" class="nav-button">
+                <img src="{% static "images/site/logout.svg" %}" alt="Logout Button"/>
+                <span class="nav-button-label">Log out</span>
+            </a>
+        </div>
+
+    {% else %}
+        <div class="nav-icons">
+            <a href="{% url 'users:log-in-page' %}" class="nav-button">
+                <img src="{% static "images/site/login.svg" %}" alt="Login Button"/>
+                <span class="nav-button-label">Log In</span>
+            </a>
+        </div>
+
+    {% endif %}
+
+
+</header>
+
+<main>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <!-- Main Content -->
+    {% block main-content %}{% endblock %}
+</main>
+
+<!-- FOOTER -->
+<footer class="footer-container">
+    <section class="links">
+        <a href="{% url 'truthtaste:home' %}">Home</a>
+        <p>｜</p>
+        <a href="index.html">About</a>
+        <p>｜</p>
+        <a href="index.html">Directions</a>
+        <p>｜</p>
+        <a href="index.html">Contact</a>
+    </section>
+    <section class="copyright">
+        <p>Copyright © 2023 TruthTaste NoVA. All Rights Reserved.</p>
+    </section>
+</footer>
+</body>
+</html>

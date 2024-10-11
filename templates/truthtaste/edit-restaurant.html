@@ -1,0 +1,42 @@
+{% extends "truthtaste/base.html" %}
+{% load static %}
+{% block page-title %}Restaurant info{% endblock %}
+
+{% block extra-css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/review-form.css' %}"/>
+{% endblock %}
+
+{% block main-content %}
+
+    <div class="create-review-page">
+
+        <form method="post" action="{% url 'truthtaste:edit-restaurant' box.id %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h1>Edit Restaurant</h1>
+
+            <div>
+                <label class="review-section-label">Restaurant Name<span class="required">*</span></label>
+                <input class="input-box" value="{{ box.title }}" type="text" name="add-title" required>
+            </div>
+
+            <div>
+                <label class="review-section-label">Type<span class="required">*</span></label>
+                <input class="input-box" value="{{ box.type }}" type="text" name="add-type" required>
+            </div>
+
+            <div>
+                <label class="review-section-label">Description</label>
+                <textarea class="input-box" name="add-description">{{ box.description }}</textarea>
+            </div>
+
+            <div>
+                <label class="review-section-label">Current Image</label><br>
+                <img src="{{ box.image.url }}" alt="{{ box.title }}" style="width: 200px; height: auto;"><br><br>
+                <label class="review-section-label">Upload New Image</label>
+                <input type="file" name="add-image">
+            </div><br>
+
+            <button type="submit" id="submit-btn">Update</button>
+        </form>
+    </div>
+{% endblock %}

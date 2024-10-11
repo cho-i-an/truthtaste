@@ -1,0 +1,30 @@
+.category-page{
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+}
+
+.category-buttons {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding: 10px 20px 0px 90px;
+  border: 1px;
+}
+
+.category-nav{
+  background-color: transparent;
+  width: 45%;
+}
+
+.button {
+  background-color: transparent;
+}
+
+.selected-category-button{
+  background-color:rgba(214, 214, 214, 1);
+}
+
+.unselected-category-button:hover{
+  background-color:rgba(214, 214, 214, 0.47);
+}

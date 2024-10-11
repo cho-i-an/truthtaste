@@ -1,0 +1,170 @@
+/*h1 {*/
+/*    text-align: center;*/
+/*    padding: 6%;*/
+/*}*/
+
+/*.user-info {*/
+/*    text-align: center;*/
+/*}*/
+
+/*.user-info h2 {*/
+/*    font-weight: bold;*/
+/*    margin: 10px 0;*/
+/*}*/
+
+/*.user-info p {*/
+/*    margin: 0 0 20px;*/
+/*}*/
+
+/* Add a Review (Review Form Page) Setting */
+main {
+    margin-bottom: 90px;
+}
+
+.review-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.review-form .form-group {
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 800px;
+}
+
+/* Input */
+
+.input-box {
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    transition: box-shadow 0.3s ease;
+}
+
+.input-box:hover {
+    box-shadow: 0 0 10px var(--primary-button-color);
+}
+
+.profile-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Titles Setting */
+
+label {
+    padding: 5px;
+}
+
+.required {
+    color: red;
+    font-weight: bold;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.review-section-label {
+    padding: 15px;
+    font-weight: bold;
+}
+
+/* Rating Stars */
+
+.review-form .stars {
+    direction: rtl;
+}
+
+.review-form .stars label {
+    font-size: 24px;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s;
+    display: inline-block;
+}
+
+.review-form .stars label:hover,
+.review-form .stars label:hover ~ label,
+.review-form .stars input[type="radio"]:checked + label,
+.review-form .stars input[type="radio"]:checked ~ label {
+    color: #ffc700;
+}
+
+.review-form .stars input[type="radio"] {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+    width: 24px;
+    height: 24px;
+}
+
+.review-form .stars {
+    text-align: start;
+}
+
+/* Check Box */
+
+.checkbox-wrapper {
+    width: 200px;
+}
+
+.checkbox-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.checkbox-item label {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.checkbox-item input[type="checkbox"] {
+    flex-shrink: 0;
+}
+
+/* Detailed Rating */
+
+.detailed-rating {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Submit Button */
+
+#submit-btn {
+    background-color: var(--primary-button-color);
+    color: white;
+    width: 50%;
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+#submit-btn:hover {
+    background-color: var(--primary-button-hover-color);
+    cursor: pointer;
+}
+
+/* Mobile Size */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .restaurant-image {
+        width: 100%;
+    }
+}

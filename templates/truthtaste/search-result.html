@@ -1,0 +1,161 @@
+{% extends "truthtaste/base.html" %}
+{% load static %}
+{% block page-title %}Search result{% endblock %}
+
+{% block main-content %}
+    <!-- Main Content -->
+    <div id="search-result-page">
+        <!-- Sort -->
+        <div class="sort-section">
+            <label for="sort-dropdown">Sort by:</label>
+            <select id="sort-dropdown">
+                <option value="relevant">Relevant</option>
+                <option value="popular">Popular</option>
+                <option value="distance">Distance</option>
+            </select>
+        </div>
+
+        <div class="search-msg">You searched cafe</div>
+
+        <!-- List of restaurants -->
+        <div class="store-boxes">
+            <div class="store-box">
+                <div class="store-image">
+                    <a href="#">
+                        <img
+                                src="images/restaurant/restaurant-1.jpg"
+                                alt="Riverside Roasters"
+                        />
+                        <!-- Image Resource: https://unsplash.com/photos/3b2tADGAWnU -->
+                    </a>
+                </div>
+                <div class="store-title">Riverside Roasters</div>
+                <span class="store-rating">★★★★☆ 4.5 (158)</span>
+                <span class="store-type">Coffee shop</span>
+                <p>Freshly roasted beans paired with homemade desserts.</p>
+                <a href="restaurant_list/restaurant-detail.html" class="view-details-btn"
+                >View Details</a
+                >
+            </div>
+            <div class="store-box">
+                <div class="store-image">
+                    <a href="#">
+                        <img
+                                src="images/restaurant/restaurant-2.jpg"
+                                alt="Sunrise Sips Café"
+                        />
+                        <!-- Image Resource: https://unsplash.com/photos/xhKG01FN2uk -->
+                    </a>
+                </div>
+                <div class="store-title">Sunrise Sips Café</div>
+                <span class="store-rating">★★★★☆ 4.3 (96)</span>
+                <span class="store-type">Coffee shop</span>
+                <p>Rustic cafe offering organic blends & baked goods.</p>
+                <a href="" class="view-details-btn">View Details</a>
+            </div>
+            <div class="store-box">
+                <div class="store-image">
+                    <a href="#">
+                        <img
+                                src="images/restaurant/restaurant-3.jpg"
+                                alt="Daily Drip Coffeehouse"
+                        />
+                        <!-- Image Resource: https://unsplash.com/photos/zUNs99PGDg0 -->
+                    </a>
+                </div>
+                <div class="store-title">Daily Drip Coffeehouse</div>
+                <span class="store-rating">★★★★☆ 4.1 (215)</span>
+                <span class="store-type">Coffee shop</span>
+                <p>Coffee oasis with an emphasis on sustainable practices.</p>
+                <a href="" class="view-details-btn">View Details</a>
+            </div>
+            <div class="store-box">
+                <div class="store-image">
+                    <a href="#">
+                        <img
+                                src="images/restaurant/restaurant-4.jpg"
+                                alt="Camber Coffee"
+                        />
+                        <!-- Image Resource: https://unsplash.com/photos/evwoyyKlL8g -->
+                    </a>
+                </div>
+                <div class="store-title">Camber Coffee</div>
+                <span class="store-rating">★★★★☆ 4.5 (158)</span>
+                <span class="store-type">Coffee shop</span>
+                <p>
+                    Contemporary café serving both classic and experimental brews.
+                </p>
+                <a href="" class="view-details-btn">View Details</a>
+            </div>
+            <div class="store-box hidden-box">
+                <div class="store-image">
+                    <a href="#">
+                        <img
+                                src="images/restaurant/restaurant-5.jpg"
+                                alt="Leaf & Bean Lounge"
+                        />
+                        <!-- Image Resource: https://unsplash.com -->
+                    </a>
+                </div>
+                <div class="store-title">Leaf & Bean Lounge</div>
+                <span class="store-rating">★★★★☆ 4.5 (54)</span>
+                <span class="store-type">Coffee shop</span>
+                <p>Every coffee bean tells a story of sustainability and care.</p>
+                <a href="" class="view-details-btn">View Details</a>
+            </div>
+            <div class="store-box hidden-box">
+                <div class="store-image">
+                    <a href="#">
+                        <img
+                                src="images/restaurant/restaurant-6.jpg"
+                                alt="Blue Cup Coffee"
+                        />
+                        <!-- Image Resource: https://unsplash.com -->
+                    </a>
+                </div>
+                <div class="store-title">Blue Cup Coffee</div>
+                <span class="store-rating">★★★★☆ 4.5 (154)</span>
+                <span class="store-type">Coffee shop</span>
+                <p>Embracing nature's serenity one brew at a time.</p>
+                <a href="" class="view-details-btn">View Details</a>
+            </div>
+            <div class="store-box hidden-box">
+                <div class="store-image">
+                    <a href="#">
+                        <img
+                                src="images/restaurant/restaurant-7.jpg"
+                                alt="Twilight Espresso Lounge"
+                        />
+                        <!-- Image Resource: https://unsplash.com/photos/evwoyyKlL8g -->
+                    </a>
+                </div>
+                <div class="store-title">Twilight Espresso Lounge</div>
+                <span class="store-rating">★★★★☆ 4.1 (133)</span>
+                <span class="store-type">Coffee shop</span>
+                <p>
+                    Indulge in coffee as the city lights dim, a perfect blend of night
+                    and caffeine.
+                </p>
+                <a href="" class="view-details-btn">View Details</a>
+            </div>
+            <div class="store-box hidden-box">
+                <div class="store-image">
+                    <a href="#">
+                        <img
+                                src="images/restaurant/restaurant-8.jpg"
+                                alt="Canvas Coffee Gallery"
+                        />
+                        <!-- Image Resource: https://unsplash.com -->
+                    </a>
+                </div>
+                <div class="store-title">Canvas Coffee Gallery</div>
+                <span class="store-rating">★★★★☆ 4.4 (199)</span>
+                <span class="store-type">Coffee shop</span>
+                <p>Where art and aroma create an enthralling masterpiece.</p>
+                <a href="" class="view-details-btn">View Details</a>
+            </div>
+        </div>
+        <button class="viewMore">View More</button>
+    </div>
+    <div class="search-msg" id="error-msg-page">You did NOT search cafe.</div>
+{% endblock %}

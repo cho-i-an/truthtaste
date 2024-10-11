@@ -1,0 +1,154 @@
+/* Restaurant Page Setting */
+
+#restaurant-list-page {
+    margin-bottom: 95px;
+}
+
+/* Sort */
+
+.sort-section {
+    display: flex;
+    align-items: center;
+    margin: 16px 16px 10px 16px;
+}
+
+.sort-section label {
+    margin-right: 10px;
+    color: var(--secondary-text-color);
+}
+
+#sort-dropdown {
+    padding: 5px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.add-button {
+    width: calc(50% - 10px);
+    height: 40px;
+    cursor: pointer;
+    box-sizing: border-box;
+    /*border: 1px solid var(--border-color);*/
+    background-color: var(--tertiary-background-color);
+    margin: 1em 1em 1em 1em;
+}
+
+.add-button:hover {
+    background-color: rgb(233, 233, 233);
+}
+
+/* List of Restaurants */
+
+.store-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1em 1em 1em 1em;
+    gap: 1em;
+}
+
+.store-box {
+    display: grid;
+    grid-template-columns: 1fr minmax(10em, 12em);
+    grid-template-rows: min-content min-content min-content 1fr min-content;
+    background-color: var(--card-background-color);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    column-gap: 1.2em;
+    row-gap: 0.5em;
+    padding: 1.5em;
+}
+
+.store-image {
+    width: 180px;
+    grid-column: 1 / 2;
+    grid-row: 1 / -1;
+}
+
+.store-title {
+    font-weight: bold;
+    grid-row: 1;
+}
+
+.store-type {
+    color: var(--secondary-text-color);
+    grid-row: 3;
+}
+
+/* Action Buttons */
+.action-icons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.action-icons a {
+    display: block;
+}
+
+.action-icons img {
+    width: 20px;
+    height: auto;
+}
+
+.action-icons a:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+/* View Deatils Button */
+
+.view-details-btn,
+.view-details-btn:link,
+.view-details-btn:visited {
+    display: block;
+    grid-row: -2 / -1;
+    justify-self: end;
+    border: none;
+    padding: 0.6em;
+    background-color: var(--primary-button-color);
+    color: white;
+    cursor: pointer;
+}
+
+.view-details-btn:hover,
+.view-details-btn:active {
+    background-color: var(--primary-button-hover-color);
+    text-decoration: none;
+}
+
+/* View More */
+
+.viewMore {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    background-color: var(--tertiary-background-color);
+}
+
+.hidden-box {
+    display: none;
+}
+
+/* Mobile Size */
+
+@media screen and (max-width: 768px) {
+    #restaurant-list-page {
+        margin-bottom: 125px;
+    }
+
+    .store-boxes {
+        padding: 1em 0;
+    }
+
+    .store-box {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .store-image {
+        width: 130px;
+    }
+}

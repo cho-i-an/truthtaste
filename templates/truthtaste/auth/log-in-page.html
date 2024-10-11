@@ -1,0 +1,29 @@
+{% extends "truthtaste/base.html" %}
+{% load static %}
+{% block page-title %}Sign up page{% endblock %}
+
+{% block extra-css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/sign-up-or-log-in.css' %}"/>
+{% endblock %}
+
+{% block main-content %}
+    <!-- Sign Up Page Content -->
+    <div class="sign-up-page">
+
+        <!-- Search Section -->
+        <section class="search-wrapper">
+            <form method="POST">
+                {% csrf_token %}
+                <h1 class="search-desc">Log In to Your Account</h1>
+                <label class="review-section-label">User Name</label>
+                <input class="input-box" placeholder="Your user name" type="text" name="username"/>
+                <label class="review-section-label">Password</label>
+                <input class="input-box" placeholder="Your password" type="password" name="password"/>
+                <button class="cta-btn">Log In</button>
+            </form>
+            <p class="log-in-info">Not a member? <a href="{% url 'users:register' %}">Create a New Account</a>
+            </p>
+        </section>
+    </div>
+
+{% endblock %}

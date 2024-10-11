@@ -1,0 +1,27 @@
+{% load static %}
+{% block extra-css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/feed.css' %}"/>
+{% endblock %}
+
+<h3>Recent Activity</h3>
+
+<ul class="activities">
+    {% for action in actions %}
+        <li>
+            {% if action.verb == "'s role has been changed" %}
+                <a href="{% url 'users:profile' username=action.user.username %}">{{ action.user.username }}</a>
+                {{ action.verb }} {{ action.created|timesince }} ago.
+            {% elif action.verb == "deleted a restaurant" %}
+                <a href="{% url 'users:profile' username=action.user.username %}">{{ action.user.username }}</a>
+                {{ action.verb }} “{{ action.details }}” {{ action.created|timesince }} ago.
+            {% else %}
+                <a href="{% url 'users:profile' username=action.user.username %}">{{ action.user.username }}</a>
+                {{ action.verb }} "<a href="{{ action.target.get_absolute_url }}">{{ action.target }}</a>" {{ action.created|timesince }} ago.
+            {% endif %}
+        </li>
+    {% empty %}
+
+        <li>No activity yet.</li>
+
+    {% endfor %}
+</ul>

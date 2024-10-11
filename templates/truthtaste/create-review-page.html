@@ -1,0 +1,38 @@
+{% extends "truthtaste/base.html" %}
+{% load static %}
+{% block page-title %}Restaurant info{% endblock %}
+
+{% block extra-css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/review-form.css' %}"/>
+{% endblock %}
+
+{% block main-content %}
+
+    <div class="create-review-page">
+        <h1>Restaurant: {{ store.title }}</h1>
+        <h2>Review Form</h2>
+
+        <form method="post" enctype="multipart/form-data" class="review-form"
+              action="{% url 'truthtaste:create_review' store.id %}">
+
+            {% csrf_token %}
+            <label for="title" class="review-section-label">Title <span class="required">*</span></label>
+            <input type="text" id="title" name="title" class="input-box" required>
+
+            <label for="content" class="review-section-label">Write a Review <span class="required">*</span></label>
+            <textarea id="content" name="content" class="input-box" required></textarea>
+
+            <label for="rating" class="review-section-label">Overall Rating <span class="required">*</span></label>
+
+            <div class="stars">
+                <input type="radio" id="star5" name="rating" value="5"/><label for="star5">&#9733;</label>
+                <input type="radio" id="star4" name="rating" value="4"/><label for="star4">&#9733;</label>
+                <input type="radio" id="star3" name="rating" value="3"/><label for="star3">&#9733;</label>
+                <input type="radio" id="star2" name="rating" value="2"/><label for="star2">&#9733;</label>
+                <input type="radio" id="star1" name="rating" value="1"/><label for="star1">&#9733;</label>
+            </div>
+
+            <button type="submit" id="submit-btn">Submit</button>
+        </form>
+    </div>
+{% endblock %}
